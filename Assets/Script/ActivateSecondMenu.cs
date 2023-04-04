@@ -15,7 +15,7 @@ public class ActivateSecondMenu : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new UnityEngine.Vector3(0,1,0)* Time.deltaTime;
+        
     }
 
     public void Activate()
