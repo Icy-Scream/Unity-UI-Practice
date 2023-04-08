@@ -9,17 +9,9 @@ public class CannonBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();  
+        rb = GetComponent<Rigidbody>();
+        rb.AddRelativeForce(new Vector3(0, 0, 500f));
         Destroy(gameObject, 5);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        rb.AddRelativeForce(new Vector3(0, 0,3));
 
     }
 }
