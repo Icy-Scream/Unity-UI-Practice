@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Slider _volumeSlider;
     [SerializeField] private Light _brightnessLight;
     [SerializeField] private AudioMixer _volumeMixer;
+    [SerializeField] private Image _overLay;
     private bool _isPauseMenuActive = false;
     void Start()
     {
@@ -24,11 +25,11 @@ public class PauseMenu : MonoBehaviour
             PauseMenuSwitch();
         }
 
-        _brightnessLight.intensity = _brightnessSlider.value;
+        DarkOverlay();        
         AdjustVolume();
     }
 
-    public void PauseMenuSwitch() {
+    private void PauseMenuSwitch() {
         if(!_isPauseMenuActive) {
             _pauseMenu.SetActive(true);
             _isPauseMenuActive=true;
@@ -39,11 +40,17 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void DisableMainMenu() {
+    private void DisableMainMenu() {
         _pauseMenu.SetActive(false);
     }
 
-    public void AdjustVolume() {
+    private void AdjustVolume() {
         _volumeMixer.SetFloat("BG_Music", _volumeSlider.value);
+    }
+
+    private void DarkOverlay(){
+        var tempColor = _overLay.color;
+        tempColor.a = _brightnessSlider.value;
+        _overLay.color = tempColor;   
     }
 }
